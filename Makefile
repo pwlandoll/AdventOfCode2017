@@ -1,10 +1,14 @@
+GOPATH=$(shell pwd)
+
 .PHONY: clean
+clean: ./bin/
+	rm -f ./bin/*
 
-clean:
-	rm -f *.exe
+setup: clean ./src/
 
-.PHONY: ms1
+ms1: setup ./src/ms1_p1/p1.go ./src/ms1_p2/p2.go ./inputs/ms1.txt
+	go install ms1_p1 && go install ms1_p2
 
-ms1: clean ./ms1/p1.go ./ms1/input.txt
-	go build ./ms1
+.PHONY: all
+all: ms1
 

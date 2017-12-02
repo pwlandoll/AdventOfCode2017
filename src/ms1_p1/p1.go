@@ -1,6 +1,5 @@
 package main
 
-//import "bytes"
 import "fmt"
 import "io/ioutil"
 import "strconv"
@@ -30,7 +29,7 @@ func main() {
 
     sum := 0
 
-    filebytes, err := ioutil.ReadFile("./ms1/input.txt")
+    filebytes, err := ioutil.ReadFile("./inputs/ms1.txt")
     check(err)
 
     int_arr := ByteArrToIntArr(filebytes)
@@ -42,6 +41,6 @@ func main() {
         }
     }
 
-    fmt.Printf("Final sum: %d.", sum)
+    fmt.Printf("Final sum: %d.\n", sum)
 }
 
