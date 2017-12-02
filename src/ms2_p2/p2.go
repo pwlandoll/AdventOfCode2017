@@ -30,20 +30,24 @@ func ByteArrToIntArr(b []byte) [][]int {
 }
 
 func main() {
-    fmt.Printf("Day 2, puzzle #1:\n")
+    fmt.Printf("Day 2, puzzle #2:\n")
 
     checksum := 0
-    difference := 0
 
     filebytes, err := ioutil.ReadFile("./inputs/ms2.txt")
     check(err)
 
     spreadsheet := ByteArrToIntArr(filebytes)
-    fmt.Println(spreadsheet)
     for _, row := range spreadsheet {
         sort.Ints(row)
-        difference = row[len(row)-1] - row[0]
-        checksum += difference
+        for _, n := range row {
+            for _, m := range row {
+                if n % m == 0 && n != m {
+                    checksum += n/m
+                    break
+                }
+            }
+        }
     }
 
     fmt.Printf("Final checksum: %d.\n", checksum)
